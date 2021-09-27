@@ -339,24 +339,23 @@ function sledding (inputMap) {
         }
     }
 
-    treeCounterArray.push(treeCount(mapArray, 1, 1))
-    treeCounterArray.push(treeCount(mapArray, 3, 1))
-    treeCounterArray.push(treeCount(mapArray, 5, 1))
-    treeCounterArray.push(treeCount(mapArray, 7, 1))
-    treeCounterArray.push(treeCount(mapArray, 1, 2))
+    treeCounterArray.push(treeCount(mapArray, 1, 1, 1))
+    treeCounterArray.push(treeCount(mapArray, 3, 3, 1))
+    treeCounterArray.push(treeCount(mapArray, 5, 5, 1))
+    treeCounterArray.push(treeCount(mapArray, 7, 7,  1))
+    treeCounterArray.push(treeCount(mapArray, 1, 1, 2))
 
-    return treeCounterArray//.reduce((num, product) => num * product)
+    return treeCounterArray.reduce((num, product) => num * product)
 }
 
-function treeCount (map, rightIncrement, downIncrement){
+function treeCount (map, startingPoint, rightIncrement, downIncrement){
     treeCounter = 0
 
     for (let i = downIncrement; i < map.length; i += downIncrement){
-        if (map[i][rightIncrement] === "#"){
+        if (map[i][startingPoint] === "#"){
             treeCounter += 1
         }
-        rightIncrement += rightIncrement
-        console.log(i)
+        startingPoint += rightIncrement
     }
     return treeCounter
 }
