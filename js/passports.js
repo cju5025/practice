@@ -1143,7 +1143,31 @@ hcl:#602927 iyr:2013 byr:2003 eyr:2023 cid:100
 function passportChecker (passports) {
     let passportArray = passports.split("\n")
     let sortedPassportArray = passportArray.toString().split(",,")
-    return sortedPassportArray
+    let passportInfoCriteriaArray = []
+    let validPassportCount = 0
+
+    for (i = 0; i < sortedPassportArray.length; i++){
+        sortedPassportArray[i] = sortedPassportArray[i].replaceAll(",", " ")
+    }
+
+    for (let i = 0; i < sortedPassportArray.length; i++){
+        for (let j = 0; j < sortedPassportArray[i].length; j++){
+            if (sortedPassportArray[i][j] === ":"){
+                passportInfoCriteriaArray.push(sortedPassportArray[i][j-3] + sortedPassportArray[i][j-2] + sortedPassportArray[i][j-1] + " ")
+            }
+        }
+    }
+
+    return passportInfoCriteriaArray
+
+    passportInfoCriteriaArray.forEach(criteria => {
+        if (criteria.includes("ecl") && criteria.includes("pid") && criteria.includes("eyr")
+            && criteria.includes("hcl") && criteria.includes("byr") && criteria.includes("iyr")
+            && criteria.includes("hgt")){
+            validPassportCount += 1
+        }
+    })
+    return validPassportCount
 }
 
 console.log(passportChecker(input))
