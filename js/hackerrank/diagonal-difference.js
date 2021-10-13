@@ -8,7 +8,6 @@ const input =
 const diagonalDifference = (a) => {
     let rightDiagonalSum = 0
     let leftDiagonalSum = 0
-    let absoluteDifference = 0
 
     for (let i = 0; i < a.length; i++){
         rightDiagonalSum += a[i][i]
