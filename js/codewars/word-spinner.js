@@ -1,5 +1,13 @@
-const wordSpinner = (phrase) => {
-    return phrase
+const wordSpinner = (string) => {
+    stringArray = string.split(" ")
+
+    for (let i = 0; i < stringArray.length; i++){
+        if (stringArray[i].length > 4){
+            stringArray[i] = stringArray[i].split("").reverse().join("")
+        }
+    }
+
+    return stringArray.join(" ")
 }
 
 
