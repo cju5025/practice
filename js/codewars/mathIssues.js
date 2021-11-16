@@ -7,7 +7,7 @@ Math.round = function(number) {
 Math.ceil = function(number) {
   let inputArray = Number.isInteger(number) ? wholeNumberToArray(number) : decimalToArray(number)
   inputArray = parseStringArray(inputArray)
-  return inputArray[0] + 1
+  return inputArray[1] ? inputArray[0] + 1 : inputArray[0]
 };
   
 Math.floor = function(number) {
@@ -34,5 +34,6 @@ const parseStringArray = (arrayOfStrings) => {
   console.log(Math.round(2.8))
   console.log(Math.ceil(2.8))
   console.log(Math.ceil(2.8))
+  console.log(Math.ceil(9))
   console.log(Math.floor(2.8))
   console.log(Math.floor(2.8))
