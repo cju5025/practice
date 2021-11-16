@@ -1,5 +1,8 @@
 Math.round = function(number) {
   let inputArray = Number.isInteger(number) ? wholeNumberToArray(number) : decimalToArray(number)
+  if (inputArray[1]) {
+    inputArray[1] = inputArray[1].length > 1 ? inputArray[1][0] : inputArray[1]
+  }
   inputArray = parseStringArray(inputArray)
   return inputArray[1] >= 5 ? inputArray[0] + 1 : inputArray[0]
 };
@@ -32,6 +35,7 @@ const parseStringArray = (arrayOfStrings) => {
 
   console.log(Math.round(2.4))
   console.log(Math.round(2.8))
+  console.log(Math.round(6.48))
   console.log(Math.ceil(2.8))
   console.log(Math.ceil(2.8))
   console.log(Math.ceil(9))
