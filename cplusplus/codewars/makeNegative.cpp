@@ -1,4 +1,8 @@
 int makeNegative(int num)
 {
-  return 0;
+  if (num <= 0){
+    return num;
+  } else {
+    return num - num * 2;
+  }
 }
